@@ -38,10 +38,29 @@ export const Name = styled.Text`
   color: #444444;
 `;
 
-export const HeadList = styled.View``;
+export const HeadList = styled.View`
+  padding: 0 20px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
-export const Title = styled.Text``;
+export const Title = styled.Text`
+  font-size: 22px;
+  font-weight: bold;
+  color: #444444;
+`;
 
-export const Filter = styled.View``;
+export const Filter = styled.View`
+  flex-direction: row;
+`;
 
-export const Link = styled.Text``;
+export const LinkFilter = styled.TouchableOpacity``;
+
+export const LinkText = styled.Text`
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: ${(props) => (props.btnPressed ? '#7d40e7' : '#999999')};
+  text-decoration: ${(props) => (props.btnPressed ? 'underline' : 'none')};
+`;

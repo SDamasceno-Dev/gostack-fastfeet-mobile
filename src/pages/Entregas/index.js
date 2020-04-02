@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import api from '~/services/api';
 
 import Delivery from '~/components/Delivery';
 
@@ -15,20 +17,37 @@ import {
   HeadList,
   Title,
   Filter,
+  LinkFilter,
+  LinkText,
 } from './styles';
 
-const data = [1, 2, 3];
+export default function Entregas({ navigation }) {
+  const profile = useSelector((state) => state.auth.user);
+  const [deliveries, setDeliveries] = useState([]);
+  const [deliveryFilter, setDeliveryFilter] = useState([false, 'Pendentes']);
 
-export default function Entregas() {
+  useEffect(() => {
+    async function loadDeliveries() {
+      const response = await api.get(
+        `courier/${profile.id}/deliveries?delivered=${deliveryFilter[0]}`
+      );
+      setDeliveries(response.data);
+    }
+
+    loadDeliveries();
+  }, [profile.id, deliveryFilter]);
+
   return (
     <Container>
       <Header>
         <Avatar
-          source={{ uri: 'https://api.adorable.io/avatar/68/sdamasceno.png' }}
+          source={{
+            uri: `http://192.168.15.99:3028/files/${profile.avatar.path}`,
+          }}
         />
         <Info>
           <Message>Bem vindo de volta,</Message>
-          <Name>José Maria</Name>
+          <Name>{profile.name}</Name>
         </Info>
         <TouchableOpacity onPress={() => {}}>
           <Icon name="exit-to-app" size={25} color="#E74040" />
@@ -36,12 +55,25 @@ export default function Entregas() {
       </Header>
       <HeadList>
         <Title>Entregas</Title>
-        <Filter />
+        <Filter>
+          <LinkFilter onPress={() => setDeliveryFilter([false, 'Pendentes'])}>
+            <LinkText btnPressed={deliveryFilter[1] === 'Pendentes' ? 1 : 0}>
+              Pendentes
+            </LinkText>
+          </LinkFilter>
+          <LinkFilter onPress={() => setDeliveryFilter([true, 'Entregues'])}>
+            <LinkText btnPressed={deliveryFilter[1] === 'Entregues' ? 1 : 0}>
+              Entregues
+            </LinkText>
+          </LinkFilter>
+        </Filter>
       </HeadList>
       <List
-        data={data}
-        keyExtractor={(item) => String(item)}
-        renderItem={({ item }) => <Delivery data={item} />}
+        data={deliveries}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => (
+          <Delivery data={item} navigation={navigation} />
+        )}
       />
     </Container>
   );
