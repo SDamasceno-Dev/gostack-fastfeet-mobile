@@ -41,7 +41,7 @@ export const Background = styled.View`
 
 export const DeliveryInfo = styled.View`
   width: 335px;
-  height: 207px;
+  min-height: 207px;
   padding: 15px;
   border-radius: 4px;
   background: #fff;

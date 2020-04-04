@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { format, parseISO } from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconn from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -18,7 +19,8 @@ import {
   BtnDescription,
 } from './styles';
 
-export default function DeliveryDetail() {
+export default function DeliveryDetail(data) {
+  const deliveryData = data.navigation.state.params.data;
   return (
     <Container>
       <Background />
@@ -30,19 +32,19 @@ export default function DeliveryDetail() {
         <Row>
           <Field>
             <Label>DESTINATÁRIO</Label>
-            <Info>Ludwig Van Beethoven</Info>
+            <Info>{deliveryData.recipient.name}</Info>
           </Field>
         </Row>
         <Row>
           <Field>
             <Label>ENDEREÇO DE ENTREGA</Label>
-            <Info>Rua Beethoven, 1729, Diadema - SP, 09960-580</Info>
+            <Info>{`${deliveryData.recipient.street}, ${deliveryData.recipient.number}, (${deliveryData.recipient.complement}) ${deliveryData.recipient.city} - ${deliveryData.recipient.state}, ${deliveryData.recipient.zipcode}`}</Info>
           </Field>
         </Row>
         <Row>
           <Field>
             <Label>PRODUTO</Label>
-            <Info>Yamaha SX7</Info>
+            <Info>{deliveryData.product}</Info>
           </Field>
         </Row>
       </DeliveryInfo>
@@ -54,30 +56,47 @@ export default function DeliveryDetail() {
         <Row>
           <Field>
             <Label>STATUS</Label>
-            <Info>Pendente</Info>
+            <Info>
+              {deliveryData.end_date === null ? 'Pendente' : 'Entregue'}
+            </Info>
           </Field>
         </Row>
         <Row>
           <Field>
             <Label>DATA DA RETIRADA</Label>
-            <Info>14/01/2020</Info>
+            <Info>
+              {deliveryData.start_date === null
+                ? '--/--/--'
+                : format(parseISO(deliveryData.start_date), 'dd/MM/yyyy')}
+            </Info>
           </Field>
           <Field>
             <Label>DATA DE ENTREGA</Label>
-            <Info>--/--/--</Info>
+            <Info>
+              {deliveryData.end_date === null
+                ? '--/--/--'
+                : format(parseISO(deliveryData.start_date), 'dd/MM/yyyy')}
+            </Info>
           </Field>
         </Row>
       </DeliverySituation>
       <Controls>
-        <BtnControl>
+        <BtnControl
+          onPress={() =>
+            data.navigation.navigate('DeliveryProblem', deliveryData)
+          }>
           <Icon name="highlight-off" size={40} color="#E74040" />
           <BtnDescription>Informar Problema</BtnDescription>
         </BtnControl>
-        <BtnControl>
+        <BtnControl
+          onPress={() =>
+            data.navigation.navigate('DeliveryProblemView', deliveryData)
+          }>
           <Icon name="error-outline" size={40} color="#E7BA40" />
           <BtnDescription>Visualizar Problemas</BtnDescription>
         </BtnControl>
-        <BtnControl>
+        <BtnControl
+          onPress={() => data.navigation.navigate('DeliveryConfirm', { data })}>
           <Iconn name="check-circle-outline" size={40} color="#7D40E7" />
           <BtnDescription>Confirmar Entrega</BtnDescription>
         </BtnControl>
@@ -86,7 +105,7 @@ export default function DeliveryDetail() {
   );
 }
 
-DeliveryDetail.navigationOptions = ({ navigation }) => ({
+DeliveryDetail.navigationOptions = (data) => ({
   headerTransparent: true,
   headerTintColor: '#fff',
   headerTitleAlign: 'center',
@@ -94,7 +113,7 @@ DeliveryDetail.navigationOptions = ({ navigation }) => ({
   headerLeft: () => (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('Entregas');
+        data.navigation.goBack();
       }}>
       <Icon name="chevron-left" size={30} color="#fff" />
     </TouchableOpacity>

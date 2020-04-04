@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { signOut } from '~/store/modules/auth/actions';
 import api from '~/services/api';
 
 import Delivery from '~/components/Delivery';
@@ -25,6 +26,7 @@ export default function Entregas({ navigation }) {
   const profile = useSelector((state) => state.auth.user);
   const [deliveries, setDeliveries] = useState([]);
   const [deliveryFilter, setDeliveryFilter] = useState([false, 'Pendentes']);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function loadDeliveries() {
@@ -36,6 +38,10 @@ export default function Entregas({ navigation }) {
 
     loadDeliveries();
   }, [profile.id, deliveryFilter]);
+
+  function handleLogout() {
+    dispatch(signOut());
+  }
 
   return (
     <Container>
@@ -49,7 +55,7 @@ export default function Entregas({ navigation }) {
           <Message>Bem vindo de volta,</Message>
           <Name>{profile.name}</Name>
         </Info>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={handleLogout}>
           <Icon name="exit-to-app" size={25} color="#E74040" />
         </TouchableOpacity>
       </Header>
@@ -80,6 +86,8 @@ export default function Entregas({ navigation }) {
 }
 
 Entregas.navigationOptions = {
+  headerTransparent: true,
+  title: '',
   tabBarLabel: 'Entregas',
   tabBarIcon: ({ tintColor }) => (
     <Icon name="reorder" size={25} color={tintColor} />
