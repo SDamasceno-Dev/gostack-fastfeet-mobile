@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
+import { ImageBackground } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -19,6 +20,31 @@ export const BtnCamera = styled(RectButton)`
   justify-content: center;
   margin: 0 auto;
   top: 170px;
+`;
+
+export const PhotoPreview = styled(ImageBackground)`
+  margin: 0 auto;
+  width: 335px;
+  height: 450px;
+  top: -80px;
+`;
+
+export const TextPreview = styled.Text`
+  top: -60px;
+  margin: 0 auto;
+  text-align: center;
+  width: 335px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #7d40e7;
+`;
+
+export const BtnPreview = styled.View`
+  margin: 0 auto;
+  top: -50px;
+  width: 335px;
+  flex-direction: row;
+  justify-content: space-around;
 `;
 
 export const BtnSubmitDelivery = styled(RectButton)`
