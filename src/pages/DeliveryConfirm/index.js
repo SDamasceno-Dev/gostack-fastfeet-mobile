@@ -1,4 +1,11 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Confirms the end of delivery sendin signature photo
+ */
+
+// Import of the dependencies to be used
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   TouchableOpacity,
   StyleSheet,
@@ -24,20 +31,18 @@ import {
   TextPreview,
 } from './styles';
 
-export default function DeliveryConfirm() {
+export default function DeliveryConfirm(data) {
+  const profile = useSelector((state) => state.auth.user);
+  const deliveryData = data.navigation.state.params;
   const [cameraPermission, setCameraPermission] = useState('undetermined');
   const [imageUri, setImageUri] = useState('');
-  const [imageFile, setImageFile] = useState('');
+  const [photoTaked, setPhotoTaked] = useState(false);
 
   useEffect(() => {
     Permissions.check('android.permission.CAMERA').then((response) => {
       setCameraPermission(response);
     });
   }, []);
-
-  useEffect(() => {
-    console.tron.log('imgFile', imageFile);
-  }, [imageFile]);
 
   async function takePicture(camera) {
     try {
@@ -50,6 +55,7 @@ export default function DeliveryConfirm() {
         };
         const { uri } = await camera.takePictureAsync(options);
         setImageUri(uri);
+        setPhotoTaked(true);
       }
     } catch (err) {
       Alert.alert('Erro na captura', err);
@@ -61,13 +67,7 @@ export default function DeliveryConfirm() {
       const grantedReadStorage = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE
       );
-      const grantedWriteStorage = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE
-      );
-      if (
-        grantedReadStorage &&
-        grantedWriteStorage === PermissionsAndroid.RESULTS.GRANTED
-      ) {
+      if (grantedReadStorage === PermissionsAndroid.RESULTS.GRANTED) {
         await CameraRoll.saveToCameraRoll(imageUri);
       } else {
         Alert.alert(
@@ -81,28 +81,43 @@ export default function DeliveryConfirm() {
     setImageUri(null);
   }
 
+  let photoFile = null;
   async function sendPhotoFile() {
-    await CameraRoll.getPhotos({
-      first: 1,
-      assetType: 'Photos',
-    }).then((r) => {
-      setImageFile({ photos: r.edges });
-    });
+    if (photoTaked) {
+      await CameraRoll.getPhotos({
+        first: 1,
+        assetType: 'Photos',
+      }).then((r) => {
+        const photoData = { photos: r.edges };
+        photoFile = {
+          uri: photoData.photos[0].node.image.uri,
+          type: 'image/jpeg',
+          name: photoData.photos[0].node.image.filename,
+        };
+      });
 
-    try {
-      // await api.post(`/courier/deliveries`, data, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //     id: 110,
-      //     end_date: '2020-04-05T10:28:00-03:00',
-      //     courier_id: 17,
-      //   },
-      // });
-    } catch (err) {
-      console.tron.log('Erro ao registrar entrega', err);
+      const bodyFormData = new FormData();
+      bodyFormData.append('file', photoFile);
+      bodyFormData.append('id', String(deliveryData.id));
+      bodyFormData.append('courier_id', String(profile.id));
+      bodyFormData.append('end_date', JSON.parse(JSON.stringify(new Date())));
+      try {
+        await api.post(`/courier/deliveries`, bodyFormData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
+        photoFile = null;
+        setPhotoTaked(false);
+        Alert.alert('Sucesso!', 'Entrega concluída com sucesso!!!');
+      } catch (err) {
+        console.tron.log('Erro ao registrar entrega', err);
+      }
+    } else {
+      Alert.alert(
+        'Ação não permitida',
+        'Você precisa fotografar primeiro a assinatura para concluir a entrega.'
+      );
     }
   }
-
   const styles = StyleSheet.create({
     preview: {
       alignSelf: 'center',
@@ -175,6 +190,7 @@ export default function DeliveryConfirm() {
   );
 }
 
+// Configuration of Navigation for this page
 DeliveryConfirm.navigationOptions = (data) => ({
   headerTransparent: true,
   headerTintColor: '#fff',

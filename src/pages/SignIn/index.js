@@ -3,21 +3,25 @@
  * @description: SignIn page of App
  */
 
+// Import of the dependencies to be used
 import React, { useState } from 'react';
 import { Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import logo from '~/assets/FastFeet_logo.png';
-
+// Import redux actions
 import { signInRequest } from '~/store/modules/auth/actions';
 
+// Other imports
+import logo from '~/assets/FastFeet_logo.png';
+
+// Import the style used
 import { Container, Form, FormInput, SubmitButton } from './styles';
 
 export default function SignIn() {
   const dispatch = useDispatch();
-
   const [id, setId] = useState('');
 
+  // Call the action to access the system
   function handleSubmit() {
     dispatch(signInRequest(id));
   }

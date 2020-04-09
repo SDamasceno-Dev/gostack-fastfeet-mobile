@@ -1,7 +1,14 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Visualization of the problems of this Delivery
+ */
+
+// Import of the dependencies to be used
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { parseISO, format } from 'date-fns';
 
+// Import the icon to be used
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
@@ -14,7 +21,6 @@ import {
   DelivProbItem,
   DelivProbDescription,
   DelivProbData,
-  BtnTeste,
 } from './styles';
 
 export default function DeliveryProblemView(data) {
@@ -22,6 +28,7 @@ export default function DeliveryProblemView(data) {
 
   const [delivProblems, setDelivProblems] = useState(['']);
 
+  // Get all Delivery Problems
   useEffect(() => {
     async function loadDelivProblems() {
       const response = await api.get(`/delivery/${deliveryData.id}/problems`);
@@ -54,6 +61,7 @@ export default function DeliveryProblemView(data) {
   );
 }
 
+// Configuration of Navigation for this page
 DeliveryProblemView.navigationOptions = (data) => ({
   headerTransparent: true,
   headerTintColor: '#fff',

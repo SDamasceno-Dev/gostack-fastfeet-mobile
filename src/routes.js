@@ -37,9 +37,10 @@ export default (signedIn = false) =>
                 DeliveryConfirm,
               }),
               navigationOptions: {
-                headerMode: 'none',
                 tabBarLabel: 'Entregas',
-                tabBarIcon: <Icon name="reorder" size={25} color="#7D40E7" />,
+                tabBarIcon: ({ tintColor }) => (
+                  <Icon name="reorder" size={25} color={tintColor} />
+                ),
               },
             },
             Profile,

@@ -1,3 +1,8 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Actions used in auth Module on store redux
+ */
+
 export function signInRequest(id) {
   return {
     type: '@auth/SIGN_IN_REQUEST',

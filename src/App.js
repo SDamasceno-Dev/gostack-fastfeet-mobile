@@ -1,3 +1,9 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: File that provides get Redux state
+ */
+
+// Import of the dependencies to be used
 import React from 'react';
 import { useSelector } from 'react-redux';
 

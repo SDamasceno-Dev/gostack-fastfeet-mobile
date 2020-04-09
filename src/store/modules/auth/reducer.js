@@ -1,3 +1,8 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Reducer for auth module fo Redux
+ */
+
 import produce from 'immer';
 
 const INITIAL_STATE = {

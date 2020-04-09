@@ -1,9 +1,17 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Shows the profile of the Courier logged
+ */
+
+// Import of the dependencies to be used
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { format, parseISO } from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 import { signOut } from '~/store/modules/auth/actions';
 
+// Import the style used
 import {
   Container,
   Avatar,
@@ -48,9 +56,17 @@ export default function Profile() {
   );
 }
 
+// Configuration of Navigation for this page
 Profile.navigationOptions = {
   tabBarLabel: 'Meu Perfil',
   tabBarIcon: ({ tintColor }) => (
     <Icon name="account-circle" size={25} color={tintColor} />
   ),
 };
+
+// PropTypes necessary
+Profile.propTypes = {
+  tintColor: PropTypes.string,
+};
+
+Profile.defaultProps = { tintColor: '' };

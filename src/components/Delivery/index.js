@@ -1,8 +1,17 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Tela de Dashboard das entregas associadas ao Courier
+ */
+
+// Import of the dependencies to be used
 import React from 'react';
 import { format, parseISO } from 'date-fns';
+import PropTypes from 'prop-types';
 
+// Import the icon to be used
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+// Import the style used
 import {
   Container,
   Row,
@@ -20,7 +29,7 @@ import {
   DelivViewDetailsText,
 } from './styles';
 
-export default function Delivery({ data, navigation }) {
+export default function Delivery({ data, navigation, delivered }) {
   const guideMark = true;
   return (
     <Container>
@@ -57,10 +66,31 @@ export default function Delivery({ data, navigation }) {
           <Info>{data.recipient.city}</Info>
         </DelivStatus>
         <DelivViewDetails
-          onPress={() => navigation.navigate('DeliveryDetail', { data })}>
+          onPress={() =>
+            navigation.navigate('DeliveryDetail', {
+              data,
+              delivered,
+            })
+          }>
           <DelivViewDetailsText>Ver detalhes</DelivViewDetailsText>
         </DelivViewDetails>
       </Row>
     </Container>
   );
 }
+
+// PropTypes necessary
+Delivery.propTypes = {
+  data: PropTypes.arrayOf([PropTypes.number, PropTypes.string, PropTypes.array])
+    .isRequired,
+  navigation: PropTypes.arrayOf([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.func,
+  ]).isRequired,
+  delivered: PropTypes.bool,
+};
+
+Delivery.defaultProps = {
+  delivered: null,
+};

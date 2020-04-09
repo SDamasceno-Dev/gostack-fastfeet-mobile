@@ -1,7 +1,14 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Register a problem of the Delivery
+ */
+
+// Import of the dependencies to be used
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TouchableOpacity, Alert } from 'react-native';
 
+// Import the icon to be used
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
@@ -20,6 +27,7 @@ export default function DeliveryProblem(data) {
   const deliveryData = data.navigation.state.params;
   const [textInput, setTextInput] = useState();
 
+  // Submit the problem of the Delivery
   async function handleSubmit() {
     try {
       await api.post(`/delivery/${deliveryData.id}/problems`, null, {
@@ -60,6 +68,7 @@ export default function DeliveryProblem(data) {
   );
 }
 
+// Configuration of Navigation for this page
 DeliveryProblem.navigationOptions = (data) => ({
   headerTransparent: true,
   headerTintColor: '#fff',

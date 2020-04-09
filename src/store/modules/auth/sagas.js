@@ -1,6 +1,13 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Component Button to be used in the app
+ */
+
+// Import of the dependencies to be used
 import { Alert } from 'react-native';
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 
+// Import redux actions
 import { signInSuccess, signFailure } from './actions';
 
 import api from '~/services/api';
@@ -18,8 +25,6 @@ export function* signIn({ payload }) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
-
-    // history.push('/dashboard');
   } catch (err) {
     Alert.alert('Falha na autenticação', 'Erro no acesso');
     yield put(signFailure());
@@ -36,9 +41,7 @@ export function setToken({ payload }) {
   }
 }
 
-export function signOut() {
-  // history.push('/');
-}
+export function signOut() {}
 
 export default all([
   takeLatest('persist/REHYDRATE', setToken),

@@ -1,8 +1,20 @@
+/**
+ * @author: Sandro Damasceno <sdamasceno.dev@gmail.com>
+ * @description: Dashboard of Deliveries
+ */
+
+// Import of the dependencies to be used
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+
+// Import the icon to be used
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+// Import the action to Logout
 import { signOut } from '~/store/modules/auth/actions';
+
 import api from '~/services/api';
 
 import Delivery from '~/components/Delivery';
@@ -78,18 +90,27 @@ export default function Entregas({ navigation }) {
         data={deliveries}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
-          <Delivery data={item} navigation={navigation} />
+          <Delivery
+            data={item}
+            navigation={navigation}
+            delivered={deliveryFilter[0]}
+          />
         )}
       />
     </Container>
   );
 }
 
-Entregas.navigationOptions = {
+Entregas.navigationOptions = (data) => ({
   headerTransparent: true,
   title: '',
-  tabBarLabel: 'Entregas',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="reorder" size={25} color={tintColor} />
-  ),
+});
+
+// PropTypes necessary
+Entregas.propTypes = {
+  navigation: PropTypes.arrayOf([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.array,
+  ]).isRequired,
 };
