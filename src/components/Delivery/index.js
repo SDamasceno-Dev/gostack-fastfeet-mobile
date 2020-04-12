@@ -81,13 +81,14 @@ export default function Delivery({ data, navigation, delivered }) {
 
 // PropTypes necessary
 Delivery.propTypes = {
-  data: PropTypes.arrayOf([PropTypes.number, PropTypes.string, PropTypes.array])
-    .isRequired,
-  navigation: PropTypes.arrayOf([
+  data: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.array,
-    PropTypes.func,
+    PropTypes.number,
+    PropTypes.object,
   ]).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
   delivered: PropTypes.bool,
 };
 

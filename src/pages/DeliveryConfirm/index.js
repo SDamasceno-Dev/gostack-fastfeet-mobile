@@ -16,6 +16,7 @@ import { RNCamera } from 'react-native-camera';
 import Permissions from 'react-native-permissions';
 import CameraRoll from '@react-native-community/cameraroll';
 
+// Import the icon to be used
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';

@@ -4,8 +4,9 @@
  */
 
 // Import of the dependencies to be used
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavigationEvents } from 'react-navigation';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -40,16 +41,16 @@ export default function Entregas({ navigation }) {
   const [deliveryFilter, setDeliveryFilter] = useState([false, 'Pendentes']);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function loadDeliveries() {
-      const response = await api.get(
-        `courier/${profile.id}/deliveries?delivered=${deliveryFilter[0]}`
-      );
-      setDeliveries(response.data);
-    }
-
-    loadDeliveries();
+  const loadDeliveries = useCallback(async () => {
+    const response = await api.get(
+      `courier/${profile.id}/deliveries?delivered=${deliveryFilter[0]}`
+    );
+    setDeliveries(response.data);
   }, [profile.id, deliveryFilter]);
+
+  useEffect(() => {
+    loadDeliveries();
+  }, [profile.id, deliveryFilter, loadDeliveries]);
 
   function handleLogout() {
     dispatch(signOut());
@@ -57,6 +58,7 @@ export default function Entregas({ navigation }) {
 
   return (
     <Container>
+      <NavigationEvents onDidFocus={() => loadDeliveries()} />
       <Header>
         <Avatar
           source={{
@@ -101,16 +103,14 @@ export default function Entregas({ navigation }) {
   );
 }
 
-Entregas.navigationOptions = (data) => ({
+Entregas.navigationOptions = () => ({
   headerTransparent: true,
   title: '',
 });
 
 // PropTypes necessary
 Entregas.propTypes = {
-  navigation: PropTypes.arrayOf([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.array,
-  ]).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
