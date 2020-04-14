@@ -29,24 +29,24 @@ export default function DeliveryProblem(data) {
 
   // Submit the problem of the Delivery
   async function handleSubmit() {
-    try {
-      await api.post(`/delivery/${deliveryData.id}/problems`, null, {
-        params: {
-          description: textInput,
-          courier_id: profile.id,
+    await api
+      .post(`/delivery/${deliveryData.id}/problems`, {
+        description: textInput,
+        courier_id: profile.id,
+      })
+      .then(
+        () => {
+          Alert.alert('Sucesso!', 'Problema cadastrado com sucesso!');
+          setTextInput('');
         },
-      });
-      Alert.alert(
-        'Registro efetuado',
-        'Seu problema foi cadastrado com sucesso!'
+        (error) => {
+          console.tron.log(error);
+          Alert.alert(
+            'Erro!',
+            'O problema não foi registrado. Por favor, tente mais tarde!'
+          );
+        }
       );
-      setTextInput('');
-    } catch (err) {
-      Alert.alert(
-        'Falha no registro',
-        'Falha ao tentar registrar o problema com a entrega.'
-      );
-    }
   }
 
   return (
