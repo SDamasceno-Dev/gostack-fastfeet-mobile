@@ -13,24 +13,23 @@
 </p>
 
 <p align="center" target="_blank">
-:link:| &nbsp;<a href="#page_with_curl-Descrição" target="_blank">Descrição</a> &nbsp;  | &nbsp; <a href="#books-Bibliotecas">Bibliotecas</a> &nbsp; | &nbsp; <a href="#shell-Ambiente-de-teste-e-uso">Ambiente de teste e uso</a> &nbsp; | &nbsp; <a href="#floppy_disk-Como-Instalar">Como instalar</a> &nbsp; | &nbsp; <a href="#mortar_board-Como-usar">Como usar</a> &nbsp; | &nbsp; <a href="https://github.com/SDamasceno-Dev/gostack-fastfeet-mobile/blob/master/LICENSE.MD">Licença</a> &nbsp; |
+:link:| &nbsp;<a href="#page_with_curl-Descrição" target="_blank">Descrição</a> &nbsp;  | &nbsp; <a href="#books-Bibliotecas">Bibliotecas</a> &nbsp; | &nbsp; <a href="##shell-ambiente-de-desenvolvimento-teste-e-uso">Ambiente de teste e uso</a> &nbsp; | &nbsp; <a href="#floppy_disk-Como-Instalar">Como instalar</a> &nbsp; | &nbsp; <a href="#mortar_board-Como-usar">Como usar</a> &nbsp; | &nbsp; <a href="https://github.com/SDamasceno-Dev/gostack-fastfeet-mobile/blob/master/LICENSE.MD">Licença</a> &nbsp; |
 </p>
 
 # :page_with_curl: Descrição
 
-O módulo Mobile do sistema FastFeet é a ferramenta necessária para que o entregador possa gerir as suas entregas e poder informar ao Administrador sobre alguma intercorrência que possa ocorrer durante a ação da entrega.
+O módulo Mobile do Sistema Fastfeet é a ferramenta necessária para que o entregador possa gerir as suas entregas e poder informar ao sistema sobre alguma intercorrência que possa ocorrer durante a ação da entrega.
 
 Por meio desse módulo o Entregador pode, dentre outras coisas:
 
-<ul>
-<li>Visualizar as encomendas pendentes a serem retiradas e entregues;</li>
-<li>Confirmar a retirada de uma encomenda para ser entregue;</li>
-<li>Visualizar as encomendas entregues;</li>
-<li>Visualizar os detalhes da entrega;</li>
-<li>Cadastrar e visualizar os problemas de uma entrega;</li>
-<li>Registrar a assinatura do clinete na finalização de uma entrega;</li>
-<li>Visualizar o seu perfil cadastrado no Sistema Fastfeet.</li>
-</ul>
+* Visualizar as encomendas pendentes a serem retiradas e entregues;
+* Confirmar a retirada de uma encomenda para ser entregue;
+* Visualizar as encomendas entregues;
+* Visualizar as encomendas entregues;
+* Visualizar os detalhes da entrega;
+* Cadastrar e visualizar os problemas de uma entrega;
+* Registrar a assinatura do clinete na finalização de uma entrega;
+* Visualizar o seu perfil cadastrado no Sistema Fastfeet.
 
 # :books: Bibliotecas
 
@@ -102,7 +101,7 @@ Visual Studio Code
 Version: 1.44.0
 ```
 
-e testado utilizando o seguinte Sistema Operacional de Mobile e o seguinte dispositivo
+e testado utilizando o seguinte Sistema Operacional para Mobile e o seguinte dispositivo
 
 ```bash
 Sistema Operacional: Android
@@ -116,14 +115,14 @@ Dispositivo: Galaxy Note5
 
 Para que após a clonagem do Github este módulo funcione de forma correta, serão necessárias algumas ações para que toda a estrutura fique adequada para o seu bom funcionamento. Antes de listar os passos necessários para o preparo do ambiente, é necessário que o computador onde irá rodar este módulo, já tenha instalado e devidamente configurado o [Git](https://git-scm.com/), [Node.JS >=v12.14.0 LTS](https://nodejs.org/en/), o [Yarn >=v1.22.4](https://yarnpkg.com/) e o [React-native-cli >= v2.0.1](https://www.npmjs.com/package/react-native-cli). Todos esses pacotes podem ser instalados utilizando um **Gerenciador de pacotes** compatível com o seu sistema operacional ([Homebrew](https://brew.sh/) para macOS, [Chocolatey](https://chocolatey.org/) para Windows).
 
-Com essa estrutura pronta, pode-se iniciar o preparo do ambiente para se rodar este módulo Mobile do sistema FastFeet.
+Com essa estrutura pronta, pode-se iniciar o preparo do ambiente para se rodar este módulo Mobile do Sistema Fastfeet.
 
 **1º Clonar o respositório**
 
-Para se efetuar a clonagem desse repositório, crie uma pasta onde for o local adequado no seu computador, abra uma sessão no terminal do computador, de dentro dessa pasta criada, e execute o seguinte comando:
+Para se efetuar a clonagem desse repositório, acesse a pasta raiz criada no módulo **Backend** para que fossem organizados os módulos e, a partir dessa pasta abrir uma sessão no terminal do computador e executar o seguinte comando:
 
 ```bash
-# Clona a pasta Mobile do sistema FastFeet
+# Clona a pasta Mobile do Sistema Fastfeet
 $ git clone https://github.com/SDamasceno-Dev/gostack-fastfeet-mobile
 ```
 
@@ -147,7 +146,7 @@ $ yarn
 
 **4º Ajustes necessários**
 
-Devido à certas particularidades do Android em não reconhecer o localhost como caminho válido para a rede local, é necessário informar o IP da máquina o qual vai está rodando o Banco de Dados que você irá utilizar em alguns arquivos, que estão listados abaixos com o respectivo local de ajuste, antes de se efetuar a compilação do App:
+Devido à certas particularidades do Android em não reconhecer o localhost como caminho válido para o computador na rede local, é necessário alterar em alguns arquivos, que estão listados logo abaixo, a informação do IP da máquina onde estará rodando o Banco de Dados. NA listagem abaixo dos arquivos a serem alterados, já está indicado a linha com o respectivo local de ajuste. Esses ajustes são **fundamentais** serem feitos antes de se efetuar a compilação do App:
 
 * gostack-fastfeet-mobile/src/services/api.js (linha 10)
 * gostack-fastfeet-mobile/src/pages/Entregas/index.js (linha 65)
@@ -160,17 +159,17 @@ Após feito o ajuste do IP, pode-se efetuar a compilação do APP
 
 Após a instalação das dependências necessárias, e os devidos ajustes de IP da máquina onde está rodando o Banco de Dados, será necessária fazer a compilação e instalação do App.
 
-Este App foi desenvolvido, compilado e testado por meio de um dispositivo físico, que utiliza o Sistema Operacional Android, conectado via cabo USB. Não foi utilizado durante o desenvolvimento, o uso de qualquer emulador de um dispositivo móvel.
+Este App foi testado por meio de um dispositivo físico, que utiliza o Sistema Operacional Android, conectado via cabo USB ao computador que foi utilizado para desenvolver e compilar o arquivo App. Não foi utilizado durante o desenvolvimento, o uso de qualquer emulador de um dispositivo móvel.
 
-Dessa maneira, o procedimento para compilação e instalação do App ocorrerá da seguinte maneira:
+Dessa maneira, o procedimento para compilação e instalação do App ocorrerá com os seguintes passos:
 
-* Verifique se o dispositivo a ter o App instalado está com a **Depuração USB** habilitada. Para se verificar isso, você pode seguir os passos descritos [aqui](https://react-native.rocketseat.dev/usb/android) ou pesquisar na WEB o procedimento para a habilitação desse modo para o seu aparelho;
+* Verifique se o dispositivo a ter o App instalado está com o modo de **Depuração USB** habilitado. Para se verificar isso, você pode seguir os passos descritos [aqui](https://react-native.rocketseat.dev/usb/android) ou pesquisar na WEB o procedimento para a habilitação desse modo para o seu aparelho;
 * Após o modo de **Depuração USB** habilitado, conecte o dispositivo ao computador onde será compilado o App;
 * Verifique se o computador reconheceu o dispositivo. Para verificar isso execute o seguinte comando no terminal do computador o qual o celular está conectado
   ```bash
   adb devices
   ```
-  Você precisa ter como resultado algo parecido com isso aqui
+  Se tudo estiver ok, você visualizará um resultado parecido com esse
 
   ```bash
   List of devices attached
@@ -199,7 +198,7 @@ O módulo Mobile possui 3 grandes seções, vamos analisar e entender como funci
 
 Como se pode perceber essa seção tem basicamente a função de permitir o acesso do usuário ao módulo Mobile do Sistema Fastfeet.
 
-Para que esse acesso ocorra, é necessário a entrada de 1 informação, o id do entregador cadastrado no sistema.
+Para que o acesso ocorra, é necessário a entrada de 1 informação, o id do entregador cadastrado no sistema.
 
 :heavy_exclamation_mark: **Regras de negócio**
 
@@ -207,7 +206,7 @@ Para que esse acesso ocorra, é necessário a entrada de 1 informação, o id do
 
 # :rocket: Seção "Dashboard de encomendas"
 
-Assim que o login é efetuado com sucesso, será exibida a tela na Seção "Dashboard de encomendas", conforme mostrada abaixo
+Assim que o login é efetuado com sucesso, será exibida a tela na Seção "Dashboard de entregas", conforme mostrada abaixo
 
 ![Screenshot_20200414-121624](https://user-images.githubusercontent.com/58818002/79274902-a73b9b00-7e7b-11ea-98ab-114bef9a1a6e.png)
 Nessa Seção são acompanhadas as entregas que tenham sido devidamente cadastras para este perfil de entregador.
@@ -226,7 +225,7 @@ As áreas indicadas são as seguintes:
 
   Nestes botões o usuário tem a condição de selecionar quais as encomendas que ele gostaria de visualizar em sua dashboard.
 
-  Ao escolher **Pendentes**, serão exibidas as encomendas que foram cadastradas no perfil desse entregador que que ainda não foram retiradas e também serão listadas as encomendas que já foram retiradas para a entrega.
+  Ao escolher **Pendentes**, serão exibidas as encomendas que foram cadastradas no perfil desse entregador, independentemente se elas já foram ou não retiradas.
 
   Ao escolher **Entregues** o entregador irá visualizar a listagem de encomendas que já tiveram a entrega concluída por ele.
 
@@ -245,7 +244,7 @@ As áreas indicadas são as seguintes:
 
 * **4- Alternar entre a Dashboard de entregas ou visualizar o perfil do entregador**
 
-  Nessa área o usuário tem a possibilidade de visualizar a Dashboard de entregas, podendo visualizar os detalhes de cada uma das entregas ou pode visualizar os seus dados cadastrados no Sistema Fastfeet. Essa área do "Meu Perfil" será melhor exibida mais abaixo.
+  Nessa área o usuário tem a possibilidade de visualizar a Dashboard de entregas, podendo visualizar os detalhes de cada uma das entregas ou pode visualizar o seu perfil no sistema contendo os seus dados cadastrados. Essa área do "Meu Perfil" será melhor exibida mais abaixo.
 
 Agora que todas as áreas foram descritas, vamos conhecer melhor a função **"Ver detalhes"**
 
@@ -255,7 +254,7 @@ Nessa área é possível visualizar diversas informações sobre a encomenda bem
 
 ![Screenshot_20200414-190420](https://user-images.githubusercontent.com/58818002/79278806-de617a80-7e82-11ea-8d19-7892a8732339.png)
 
-Na figura mostrada se pode perceber que a entrega aidna não foi retirada. Quando o entregador se apresenta na empresa para retirar a encomenda cadastrada para ele, assim que a encomenda for retirada, ele deve clicar no botão **"Retirar Entrega"**.
+Na figura mostrada se pode perceber que a entrega ainda não foi retirada. Quando o entregador se apresenta na empresa para retirar a encomenda, assim que ele executar essa ação, basta clicar no botão **"Retirar Entrega"** e esta encomenda passará a ter o status de "Retirada".
 
 :heavy_exclamation_mark: **Regras de negócio**
 
@@ -265,29 +264,31 @@ Quando essa ação é realizada, a tela passará a apresentar a seguinte aparên
 
 ![Screenshot_20200414-151706](https://user-images.githubusercontent.com/58818002/79279088-a0b12180-7e83-11ea-9d12-4803a3df9927.png)
 
-conforme podemos perceber nesta outra entrega que já foi retirada pelo entregador.
+conforme podemos perceber esta encomenda já foi retirada pelo entregador.
 
-Além das informações detalhadas da entrega e da situação da mesma, existem 3 botões que podem ser utilizado com cada entrega que já tenha sido retirada
+Além das informações detalhadas da entrega e da situação da mesma, existem 3 botões que podem ser utilizado com cada entrega
 
   * **Informar problema**: Caso durante a entrega exista alguma intercorrência que ocasione a não conclusão da entrega, a mesma deve ser registrada aqui.
 
-    Para se executar a informação ddo problema é muito simples, após clicar no botão **"Informar Problema"** será exibida a seguinte janela
+    Para se informar um problema na entrega é muito simples, após clicar no botão **"Informar Problema"** será exibida a seguinte janela
   ![Screenshot_20200414-191352](https://user-images.githubusercontent.com/58818002/79279339-364cb100-7e84-11ea-99e3-dcd695bb3911.png)
     Basta clicar no campo destinado para o registro do problema, o teclado será exibido e com isso o entregador pode descrever o ocorrido.
 
     Após a conslusão da digitação, basta clicar em "Enviar" e o problema estará cadastrado.
 
-  * **Visualizar Problemas**: Se o entregador tiver a necessidade de visualizar os problemas já cadastrados de uma determinada entrega, basta ele clicar ne sse botão e os problemas cadastrados para essa entrega serão exibidos conforme demonstra a figura abaixo
+  * **Visualizar Problemas**: Se o entregador tiver a necessidade de visualizar os problemas já cadastrados de uma determinada entrega, basta ele clicar nesse botão e os problemas cadastrados para essa entrega serão exibidos conforme demonstra a figura abaixo
   ![Screenshot_20200414-192059](https://user-images.githubusercontent.com/58818002/79279757-208bbb80-7e85-11ea-8717-c6abb3fd1305.png)
 
   * **Confirmar Entrega**: Nesse botão o entregador pode concluir a entrega, capturando a assinatura do cliente no campo designado para a sua assinatura. A aparência dessa tela é mostrada abaixo bem como a descrição de como proceder para a conclusão da entrega da encomenda
   ![Screenshot_20200414-193338-01](https://user-images.githubusercontent.com/58818002/79280908-f5ef3200-7e87-11ea-98da-f2e157f18951.jpg)
-    * Para se registrar a assinatura da conclusão da entrega, primeiro deve-se posicionar a câmera de forma que a assinatura fique bem enquadrada e bem focada, logo em seguida clicar no botão indicado com o número **1**.
+    * Para se registrar a assinatura confirmando a conclusão da entrega, primeiro deve-se posicionar a câmera de forma que a assinatura fique bem enquadrada e bem focada, logo em seguida clicar no botão, com a figura de uma câmera, indicado com o número **1** na figura acima.
 
-      Com isso a foto da assinatura será registrada e será exibida a seguinte tela
+      Com isso a foto da assinatura será registrada e será exibida a seguinte tela semelhante com essa
       ![Screenshot_20200414-193713](https://user-images.githubusercontent.com/58818002/79281129-8af22b00-7e88-11ea-8632-ca9730aef2d7.png)
 
-      Aqui é possível verificar se a foto ficou bem feita. Caso seja necessário tirar uma nova foto, basta clicar no **X**. Se a foto estiver com boa qualidade, basta clicar no símbolo de confirmação.
+      Aqui é possível verificar se a foto ficou bem feita. Caso seja necessário tirar uma nova foto, basta clicar no botão com o símbolo **X**.
+
+      Se a foto estiver com boa qualidade, basta clicar no símbolo de confirmação.
 
       Uma vez confirmada a foto, a tela voltará para a janela de registro da foto e, nesse momento basta clicar no botão **"Enviar"** que a foto registrada, será enviada para o Sistema Fastfeet e esta encomenda estará com o status de entrega concluído!
 
@@ -297,12 +298,12 @@ Além das informações detalhadas da entrega e da situação da mesma, existem 
 
 :heavy_exclamation_mark: **Regras de negócio**
 
-* Podem ser solicitadas permissões de acesso à câmera e ao local de armazenamento do aparelho. Caso essas permissões não sejam efetivadas, a captura da assinatura para concluir a entrega não poderá ser realizada;
-* Uma vez que um entrega tenha sido concluída, os botões **"Informar Problemas"** e **Confirmar Entrega** ficam desabilitados pois não há mais necessidade do uso deles.
+* Podem ser solicitadas permissões de acesso à câmera e ao local de armazenamento do aparelho no momento de se registrar a assinatura. Caso essas permissões não sejam dadas, a captura da assinatura para a conclusão da entrega não poderá ser realizada;
+* Uma vez que um entrega tenha sido concluída, os botões **"Informar Problemas"** e **Confirmar Entrega** ficam desabilitados pois não há mais necessidade do uso dessas funções.
 
 # :rocket: Seção "Meu Perfil"
 
-Esa área tem por objetivo exibir os dados do entregador bem como permitir que le também possa efetuar a saída do sistema.
+Essa área tem por objetivo exibir os dados do entregador bem como permitir que seja efetuada a saída do sistema, ao se clicar no botão "Logout".
 
 Podemos observar a aparência dessa área na figura abaixo
 
@@ -310,7 +311,7 @@ Podemos observar a aparência dessa área na figura abaixo
 
 Nessa área são exibidas as informações de Nome, Email e a data de cadastro do entregador no Sistema Fastfeet.
 
-Além das informaçòes, é exibido um botão que permite a saída do Sistema Fastfeet.
+Com isso está concluída a descrição do módulo Mobile do Sistema Fastfeet.
 
 ---
 Elaborado, criado e editado por **Sandro de Oliveira Damasceno** :space_invader:   [github!](https://github.com/SDamasceno-Dev) :octocat:
