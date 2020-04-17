@@ -255,39 +255,40 @@ Nessa área é possível visualizar diversas informações sobre a encomenda bem
 
 ![Screenshot_20200414-190420](https://user-images.githubusercontent.com/58818002/79278806-de617a80-7e82-11ea-8d19-7892a8732339.png)
 
-Na figura mostrada se pode perceber que a entrega ainda não foi retirada. Quando o entregador se apresenta na empresa para retirar a encomenda, assim que ele executar essa ação, basta clicar no botão **"Retirar Entrega"** e esta encomenda passará a ter o status de "Retirada".
+Na figura mostrada se pode perceber que a entrega ainda não foi retirada.
 
-:heavy_exclamation_mark: **Regras de negócio**
-
-  * As entregas só podem ser retirada no horário de 08h às 18h;
-
-Quando essa ação é realizada, a tela passará a apresentar a seguinte aparência
+Quando o entregador se apresenta na empresa e retira a encomenda para efetuar a entrega, ele deve confirmar a retirada clicando no botão **"Retirar Entrega"**. Quando esta ação é executada a encomenda passará a ter o status de **"Pendente"**, o campo data de retirada é preenchido com a data vigente e os botões **"Informar Problemas"**, **"Visualizar Problemas"** e **"Confirmar Entrega”** são habilitados na tela, conforme imagem abaixo
 
 ![Screenshot_20200414-151706](https://user-images.githubusercontent.com/58818002/79279088-a0b12180-7e83-11ea-9d12-4803a3df9927.png)
 
 conforme podemos perceber esta encomenda já foi retirada pelo entregador.
 
-Além das informações detalhadas da entrega e da situação da mesma, existem 3 botões que podem ser utilizado com cada entrega
+:heavy_exclamation_mark: **Regras de negócio**
 
-  * **Informar problema**: Caso durante a entrega exista alguma intercorrência que ocasione a não conclusão da entrega, a mesma deve ser registrada aqui.
+  * As entregas só podem ser retirada no horário de 08h às 18h;
 
-    Para se informar um problema na entrega é muito simples, após clicar no botão **"Informar Problema"** será exibida a seguinte janela
+### Descrição das ações  dos botões:
+
+  * **Informar problema**: Caso durante a entrega exista alguma intercorrência que ocasione a não conclusão da mesma, a informação deverá ser registrada.
+
+Para se informar um problema na entrega basta clicar no botão **"Informar Problema"** onde uma nova tela será exibida para preenchimento, conforme  exibida na imagem abaixo
   ![Screenshot_20200414-191352](https://user-images.githubusercontent.com/58818002/79279339-364cb100-7e84-11ea-99e3-dcd695bb3911.png)
-    Basta clicar no campo destinado para o registro do problema, o teclado será exibido e com isso o entregador pode descrever o ocorrido.
+    :round_pushpin: **Obs.**: Para habilitar o teclado clicar basta clicar no campo destinado para o registro do problema.
 
-    Após a conslusão da digitação, basta clicar em "Enviar" e o problema estará cadastrado.
+  Após a conclusão da digitação clicar em "Enviar" e o problema estará cadastrado.
 
-  * **Visualizar Problemas**: Se o entregador tiver a necessidade de visualizar os problemas já cadastrados de uma determinada entrega, basta ele clicar nesse botão e os problemas cadastrados para essa entrega serão exibidos conforme demonstra a figura abaixo
+  * **Visualizar Problemas**: Ao clicar no botão “Visualizar Problemas” é possível visualizar todos os problemas já cadastrados para determinada entrega, conforme demonstrado na figura abaixo
   ![Screenshot_20200414-192059](https://user-images.githubusercontent.com/58818002/79279757-208bbb80-7e85-11ea-8717-c6abb3fd1305.png)
 
-  * **Confirmar Entrega**: Nesse botão o entregador pode concluir a entrega, capturando a assinatura do cliente no campo designado para a sua assinatura. A aparência dessa tela é mostrada abaixo bem como a descrição de como proceder para a conclusão da entrega da encomenda
+  * **Confirmar Entrega**: Nesse botão é feita a confirmação da entrega ao destinatário.  É possível ainda capturar a assinatura do recebedor no campo designado para tal. A aparência dessa tela é mostrada abaixo bem como a descrição de como proceder para a conclusão da entrega da encomenda.
   ![Screenshot_20200414-193338-01](https://user-images.githubusercontent.com/58818002/79280908-f5ef3200-7e87-11ea-98da-f2e157f18951.jpg)
-    * Para se registrar a assinatura confirmando a conclusão da entrega, primeiro deve-se posicionar a câmera de forma que a assinatura fique bem enquadrada e bem focada, logo em seguida clicar no botão, com a figura de uma câmera, indicado com o número **1** na figura acima.
+    * Para se registrar a assinatura confirmando a conclusão da entrega, primeiro deve-se posicionar a câmera de forma que a assinatura fique bem enquadrada e bem focada, logo em seguida clicar no botão, com a figura de uma câmera, indicado com o número 1 na figura acima.
 
-      Com isso a foto da assinatura será registrada e será exibida a seguinte tela semelhante com essa
-      ![Screenshot_20200414-193713](https://user-images.githubusercontent.com/58818002/79281129-8af22b00-7e88-11ea-8632-ca9730aef2d7.png)
+      Com isso a foto da assinatura será registrada e exibida na tela, conforme abaixo
 
-      Aqui é possível verificar se a foto ficou bem feita. Caso seja necessário tirar uma nova foto, basta clicar no botão com o símbolo **X**.
+    ![Screenshot_20200414-193713](https://user-images.githubusercontent.com/58818002/79281129-8af22b00-7e88-11ea-8632-ca9730aef2d7.png)
+
+      Nesse momento é possível verificar a qualidade da foto. Caso seja necessário tirar uma nova foto, basta clicar no botão com o símbolo **X**.
 
       Se a foto estiver com boa qualidade, basta clicar no símbolo de confirmação.
 
@@ -304,7 +305,7 @@ Além das informações detalhadas da entrega e da situação da mesma, existem 
 
 # :rocket: Seção "Meu Perfil"
 
-Essa área tem por objetivo exibir os dados do entregador bem como permitir que seja efetuada a saída do sistema, ao se clicar no botão "Logout".
+Essa área tem por objetivo exibir os dados do entregador bem como permitir que seja efetuada a saída do sistema, através do botão "Logout".
 
 Podemos observar a aparência dessa área na figura abaixo
 
