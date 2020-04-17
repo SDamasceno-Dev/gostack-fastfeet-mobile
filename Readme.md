@@ -28,7 +28,7 @@ Por meio desse módulo o Entregador pode, dentre outras coisas:
 * Visualizar as encomendas entregues;
 * Visualizar os detalhes da entrega;
 * Cadastrar e visualizar os problemas de uma entrega;
-* Registrar a assinatura do clinete na finalização de uma entrega;
+* Registrar a assinatura do cliente na finalização de uma entrega;
 * Visualizar o seu perfil cadastrado no Sistema Fastfeet.
 
 # :books: Bibliotecas
@@ -117,9 +117,9 @@ Para que após a clonagem do Github este módulo funcione de forma correta, ser�
 
 Com essa estrutura pronta, pode-se iniciar o preparo do ambiente para se rodar este módulo Mobile do Sistema Fastfeet.
 
-**1º Clonar o respositório**
+**1º Clonar o repositório**
 
-Para se efetuar a clonagem desse repositório, acesse a pasta raiz criada no módulo **Backend** para que fossem organizados os módulos e, a partir dessa pasta abrir uma sessão no terminal do computador e executar o seguinte comando:
+Para se efetuar a clonagem desse repositório, de dentro da pasta  criada para o Sistema Fastfeet, a mesma pasta onde já foi clonado o [Backend](https://github.com/SDamasceno-Dev/gostack-fastfeet-backend) e o [Frontend](https://github.com/SDamasceno-Dev/gostack-fastfeet-frontend), abra uma sessão no terminal do computador, de dentro dessa pasta, e execute o seguinte comando:
 
 ```bash
 # Clona a pasta Mobile do Sistema Fastfeet
@@ -128,7 +128,7 @@ $ git clone https://github.com/SDamasceno-Dev/gostack-fastfeet-mobile
 
 **2º Acessar a pasta**
 
-Em seguida acessar a pasta clonada
+Acesse a pasta clonada
 
 ```bash
 # Acessa a pasta clonada
@@ -137,7 +137,7 @@ $ cd gostack-fastfeet-mobile
 
 **3º Instalar as dependências**
 
-Agora execute o Yarn para que todas as dependências sejam corretamente instaladas
+Execute o Yarn para que todas as dependências sejam corretamente instaladas
 
 ```bash
 # Instala todas as dependências necessárias
@@ -146,7 +146,7 @@ $ yarn
 
 **4º Ajustes necessários**
 
-Devido à certas particularidades do Android em não reconhecer o localhost como caminho válido para o computador na rede local, é necessário alterar em alguns arquivos, que estão listados logo abaixo, a informação do IP da máquina onde estará rodando o Banco de Dados. NA listagem abaixo dos arquivos a serem alterados, já está indicado a linha com o respectivo local de ajuste. Esses ajustes são **fundamentais** serem feitos antes de se efetuar a compilação do App:
+Devido à certas particularidades do Android em não reconhecer o localhost como caminho válido para o computador na rede local, é necessário alterar em alguns arquivos, que estão listados logo abaixo, a informação do IP da máquina onde estará rodando o Banco de Dados. Na listagem abaixo dos arquivos a serem alterados, já está indicado a linha com o respectivo local de ajuste. Esses ajustes são **fundamentais** serem feitos antes de se efetuar a compilação do App:
 
 * gostack-fastfeet-mobile/src/services/api.js (linha 10)
 * gostack-fastfeet-mobile/src/pages/Entregas/index.js (linha 65)
