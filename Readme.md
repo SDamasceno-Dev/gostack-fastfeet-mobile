@@ -18,13 +18,12 @@
 
 # :page_with_curl: Descrição
 
-O módulo Mobile do Sistema Fastfeet é a ferramenta necessária para que o entregador possa gerir as suas entregas e poder informar ao sistema sobre alguma intercorrência que possa ocorrer durante a ação da entrega.
+O módulo **Mobile** do Sistema Fastfeet é a ferramenta necessária para que o entregador possa gerir as suas entregas e poder informar ao sistema sobre alguma intercorrência que possa ocorrer durante a ação da entrega.
 
 Por meio desse módulo o Entregador pode, dentre outras coisas:
 
 * Visualizar as encomendas pendentes a serem retiradas e entregues;
 * Confirmar a retirada de uma encomenda para ser entregue;
-* Visualizar as encomendas entregues;
 * Visualizar as encomendas entregues;
 * Visualizar os detalhes da entrega;
 * Cadastrar e visualizar os problemas de uma entrega;
@@ -113,7 +112,9 @@ Dispositivo: Galaxy Note5
 
 # :floppy_disk: Como Instalar
 
-Para que após a clonagem do Github este módulo funcione de forma correta, serão necessárias algumas ações para que toda a estrutura fique adequada para o seu bom funcionamento. Antes de listar os passos necessários para o preparo do ambiente, é necessário que o computador onde irá rodar este módulo, já tenha instalado e devidamente configurado o [Git](https://git-scm.com/), [Node.JS >=v12.14.0 LTS](https://nodejs.org/en/), o [Yarn >=v1.22.4](https://yarnpkg.com/) e o [React-native-cli >= v2.0.1](https://www.npmjs.com/package/react-native-cli). Todos esses pacotes podem ser instalados utilizando um **Gerenciador de pacotes** compatível com o seu sistema operacional ([Homebrew](https://brew.sh/) para macOS, [Chocolatey](https://chocolatey.org/) para Windows).
+Para o bom funcionamento deste módulo, após a clonagem do Github, são necessárias algumas ações para a adequação da estrutura.
+
+Antes de listar os passos necessários para o preparo do ambiente, é necessário que o computador onde irá rodar este módulo, já tenha instalado e devidamente configurado o [Git](https://git-scm.com/), [Node.JS >=v12.14.0 LTS](https://nodejs.org/en/), o [Yarn >=v1.22.4](https://yarnpkg.com/) e o [React-native-cli >= v2.0.1](https://www.npmjs.com/package/react-native-cli). Todos esses pacotes podem ser instalados utilizando um **Gerenciador de pacotes** compatível com o seu sistema operacional ([Homebrew](https://brew.sh/) para macOS, [Chocolatey](https://chocolatey.org/) para Windows).
 
 Com essa estrutura pronta, pode-se iniciar o preparo do ambiente para se rodar este módulo Mobile do Sistema Fastfeet.
 
@@ -196,9 +197,9 @@ O módulo Mobile possui 3 grandes seções, vamos analisar e entender como funci
 
 ![Screenshot_20200414-121454](https://user-images.githubusercontent.com/58818002/79274014-43fd3900-7e7a-11ea-965c-9fb2ee26c721.png)
 
-Como se pode perceber essa seção tem basicamente a função de permitir o acesso do usuário ao módulo Mobile do Sistema Fastfeet.
+Essa seção tem a função de permitir o acesso do usuário ao módulo **Mobile** do Sistema Fastfeet.
 
-Para que o acesso ocorra, é necessário a entrada de 1 informação, o id do entregador cadastrado no sistema.
+Para que esse acesso ocorra, é necessário a entrada de um dado, o id do entregador cadastrado no sistema.
 
 :heavy_exclamation_mark: **Regras de negócio**
 
