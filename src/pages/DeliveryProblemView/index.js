@@ -44,7 +44,7 @@ export default function DeliveryProblemView(data) {
       <DeliveryTitle>{deliveryData.product}</DeliveryTitle>
 
       <DeliveryProblemList
-        data={delivProblems.delivery}
+        data={delivProblems.deliveryProblemsList}
         keyExtractor={(delivProblem) => String(delivProblem.id)}
         renderItem={({ item: deliveryProblem }) => (
           <DelivProbItem>
